@@ -26,4 +26,4 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Push Docker image to DockerHub
-        run: docker push your_image_name
+        run: docker push makskaled/pr7
