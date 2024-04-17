@@ -1,0 +1,41 @@
+version: '3'
+services:
+  catalog-service:
+    build: ./catalog-service
+    ports:
+      - "3000:3000"
+    depends_on:
+      - catalog-database
+
+  catalog-database:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345
+      POSTGRES_DB: catalog_db
+    volumes:
+      - catalog-data:/var/lib/postgresql/data
+
+  orders-service:
+    build: ./orders-service
+    ports:
+      - "4000:4000"
+    depends_on:
+      - orders-database
+
+  orders-database:
+    image: postgres
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345
+      POSTGRES_DB: orders_db
+    volumes:
+      - orders-data:/var/lib/postgresql/data
+
+volumes:
+  catalog-data:
+  orders-data:
