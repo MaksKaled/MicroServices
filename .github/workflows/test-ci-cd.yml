@@ -6,43 +6,44 @@ on:
       - main
 
 jobs:
-  microservice1_test:
+  catalog_service_test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout microservice1
+      - name: Checkout catalog-service
         uses: actions/checkout@v2
         with:
-          path: microservice1
+          path: catalog-service
 
-      - name: Setup Node.js for microservice1
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-      - name: Install dependencies for microservice1
-        run: npm install
-        working-directory: ./microservice1
-
-      - name: Run tests for microservice1
-        run: npm test
-        working-directory: ./microservice1
-
-  microservice2_test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout microservice2
-        uses: actions/checkout@v2
-        with:
-          path: microservice2
-
-      - name: Setup Node.js for microservice2
+      - name: Setup Node.js for catalog-service
         uses: actions/setup-node@v2
         with:
           node-version: '14'
 
-      - name: Install dependencies for microservice2
+      - name: Install dependencies for catalog-service
         run: npm install
-        working-directory: ./microservice2
+        working-directory: ./catalog-service
 
-      - name: Run tests for microservice2
+      - name: Run tests for catalog-service
         run: npm test
-        working-directory: ./microservice2
+        working-directory: ./catalog-service
+
+  orders_service_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout orders-service
+        uses: actions/checkout@v2
+        with:
+          path: orders-service
+
+      - name: Setup Node.js for orders-service
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies for orders-service
+        run: npm install
+        working-directory: ./orders-service
+
+      - name: Run tests for orders-service
+        run: npm test
+        working-directory: ./orders-service
