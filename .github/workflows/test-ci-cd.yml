@@ -1,1 +1,48 @@
+name: Test CI/CD
 
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  microservice1_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout microservice1
+        uses: actions/checkout@v2
+        with:
+          path: microservice1
+
+      - name: Setup Node.js for microservice1
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - name: Install dependencies for microservice1
+        run: npm install
+        working-directory: ./microservice1
+
+      - name: Run tests for microservice1
+        run: npm test
+        working-directory: ./microservice1
+
+  microservice2_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout microservice2
+        uses: actions/checkout@v2
+        with:
+          path: microservice2
+
+      - name: Setup Node.js for microservice2
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies for microservice2
+        run: npm install
+        working-directory: ./microservice2
+
+      - name: Run tests for microservice2
+        run: npm test
+        working-directory: ./microservice2
