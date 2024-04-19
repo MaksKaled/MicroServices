@@ -12,7 +12,7 @@ jobs:
       - name: Checkout catalog-service
         uses: actions/checkout@v2
         with:
-          path: PR6/catalog-service
+          path: catalog-service
 
       - name: Setup Node.js for catalog-service
         uses: actions/setup-node@v2
@@ -21,11 +21,11 @@ jobs:
 
       - name: Install dependencies for catalog-service
         run: npm install
-        working-directory: PR6/catalog-service
+        working-directory: catalog-service
 
       - name: Run tests for catalog-service
         run: npm test
-        working-directory: PR6/catalog-service
+        working-directory: catalog-service
 
   orders_service_test:
     runs-on: ubuntu-latest
@@ -33,7 +33,7 @@ jobs:
       - name: Checkout orders-service
         uses: actions/checkout@v2
         with:
-          path: PR6/orders-service
+          path: orders-service
 
       - name: Setup Node.js for orders-service
         uses: actions/setup-node@v2
@@ -42,8 +42,8 @@ jobs:
 
       - name: Install dependencies for orders-service
         run: npm install
-        working-directory: PR6/orders-service
+        working-directory: orders-service
 
       - name: Run tests for orders-service
         run: npm test
-        working-directory: PR6/orders-service
+        working-directory: orders-service
