@@ -25,8 +25,7 @@ jobs:
 
       - name: Run tests for catalog-service
         run: npm test
-        working-directory: MicroServices
-/catalog-service
+        working-directory: MicroServices/catalog-service
 
   orders_service_test:
     runs-on: ubuntu-latest
