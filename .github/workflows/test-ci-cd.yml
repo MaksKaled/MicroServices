@@ -9,10 +9,10 @@ jobs:
   catalog_service_test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout catalog-service
+      - name: Checkout repository
         uses: actions/checkout@v2
         with:
-          path: /catalog-service/
+          with: MaksKaled/MicroServices
 
       - name: Setup Node.js for catalog-service
         uses: actions/setup-node@v2
@@ -21,11 +21,11 @@ jobs:
 
       - name: Install dependencies for catalog-service
         run: npm install
-        working-directory: /catalog-service/
+        working-directory: catalog-service
 
       - name: Run tests for catalog-service
         run: npm test
-        working-directory: /catalog-service/
+        working-directory: catalog-service
 
   orders_service_test:
     runs-on: ubuntu-latest
