@@ -1,4 +1,4 @@
-name: Test CI/CD
+ууууууууууууууууууууууууууууууууууууууууууууууname: Test CI/CD
 
 on:
   push:
@@ -12,7 +12,7 @@ jobs:
       - name: Checkout catalog-service
         uses: actions/checkout@v2
         with:
-          path: MicroServices/catalog-service/
+          path: /catalog-service/
 
       - name: Setup Node.js for catalog-service
         uses: actions/setup-node@v2
@@ -21,11 +21,11 @@ jobs:
 
       - name: Install dependencies for catalog-service
         run: npm install
-        working-directory: MicroServices/catalog-service/
+        working-directory: /catalog-service/
 
       - name: Run tests for catalog-service
         run: npm test
-        working-directory: MicroServices/catalog-service/
+        working-directory: /catalog-service/
 
   orders_service_test:
     runs-on: ubuntu-latest
