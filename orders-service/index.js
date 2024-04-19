@@ -74,5 +74,14 @@ app.get('/orders', async (req, res) => {
 
 // Запуск сервера
 app.listen(PORT, () => {
-  console.log(`Orders service is running on port ${PORT}`);
+  if (!process.env.TEST_MODE) {
+    console.log(`Orders service is running on port ${PORT}`);
+  }
 });
+
+
+
+// Экспорт функции checkProductAvailability
+module.exports = {
+  checkProductAvailability
+};

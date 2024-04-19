@@ -1,17 +1,23 @@
+
 const express = require('express');
 const { Pool } = require('pg');
-
 const app = express();
 const PORT = process.env.PORT || 3000;
+let pool;
 
-// Подключение к базе данных PostgreSQL
-const pool = new Pool({
-  user: 'postgres', // Имя пользователя PostgreSQL
-  host: 'pr6-catalog-database-1', // Имя сервиса контейнера Docker для базы данных
-  database: 'catalog_db', // Имя базы данных PostgreSQL
-  password: '12345', // Пароль пользователя PostgreSQL
-  port: 5432, // Порт PostgreSQL
-});
+
+
+ 
+  pool = new Pool({
+    user: 'postgres',
+    host: 'pr6-catalog-database-1',
+    database: 'catalog_db',
+    password: '12345',
+    port: 5432,
+  });
+
+
+
 
 // Маршрут для получения списка товаров
 app.get('/products', async (req, res) => {
@@ -28,7 +34,7 @@ app.get('/products', async (req, res) => {
     }
   } catch (err) {
     console.error('Error executing query', err);
-    res.status(500).send('Internal Server Error: ' + err.message); // Добавлено дополнительное сообщение об ошибке
+    res.status(500).send('Internal Server Error: ' + err.message);
   }
 });
 
@@ -52,7 +58,14 @@ app.get('/products/:id', async (req, res) => {
   }
 });
 
-// Запуск сервера
+
+
+// Создание сервера и прослушивание порта
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+
+// Экспортируем приложение
+module.exports = app;
+
