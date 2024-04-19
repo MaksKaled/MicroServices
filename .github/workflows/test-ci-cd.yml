@@ -12,8 +12,7 @@ jobs:
       - name: Checkout catalog-service
         uses: actions/checkout@v2
         with:
-          path: MicroServices
-/catalog-service
+          path: MicroServices/catalog-service
 
       - name: Setup Node.js for catalog-service
         uses: actions/setup-node@v2
@@ -22,8 +21,7 @@ jobs:
 
       - name: Install dependencies for catalog-service
         run: npm install
-        working-directory: MicroServices
-/catalog-service
+        working-directory: MicroServices/catalog-service
 
       - name: Run tests for catalog-service
         run: npm test
