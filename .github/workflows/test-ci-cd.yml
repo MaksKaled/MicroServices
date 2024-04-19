@@ -12,7 +12,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
-          with: MaksKaled/MicroServices
+          repository: MaksKaled/MicroServices
 
       - name: Setup Node.js for catalog-service
         uses: actions/setup-node@v2
@@ -33,7 +33,7 @@ jobs:
       - name: Checkout orders-service
         uses: actions/checkout@v2
         with:
-          path: orders-service
+          repository: MaksKaled/MicroServices
 
       - name: Setup Node.js for orders-service
         uses: actions/setup-node@v2
